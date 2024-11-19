@@ -6,6 +6,8 @@ when someone play a game and want to share a feedback and review about it, or wh
 
 ## pseudocode
 
+-Inside the model folder will crete the
+
 ## ERD
 
 ![ERD](ERD.png)

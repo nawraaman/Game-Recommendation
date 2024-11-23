@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games</title>
+  </head>
+  <body>
+    <h1>Games</h1>
+    <ul>
+      <% games.forEach(game => { %>
+      <li>
+        <h2><a href="/games/<%= game._id %>"><%= game.gameName %></a></h2>
+        <p><%= game.description %></p>
+        <p>Type: <%= game.type %></p>
+        <p>Average Rating: <%= game.averageRating %></p>
+        <% if (user && user._id.toString() === game.userId._id.toString()) { %>
+        <a href="/games/<%= game._id %>/edit">Edit</a>
+        <form
+          action="/games/<%= game._id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+        <% } %>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

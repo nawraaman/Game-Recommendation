@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Game</title>
+  </head>
+  <body>
+    <h1>Edit Game</h1>
+    <form action="/games/<%= game._id %>?_method=PUT" method="POST">
+      <input
+        type="text"
+        name="gameName"
+        value="<%= game.gameName %>"
+        required
+      />
+      <textarea name="description" required><%= game.description %></textarea>
+      <input type="text" name="type" value="<%= game.type %>" />
+      <button type="submit">Update Game</button>
+    </form>
+  </body>
+</html>

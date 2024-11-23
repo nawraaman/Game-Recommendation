@@ -3,19 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Games</title>
+    <title>Game Recommendation</title>
   </head>
-  <body class="index-body">
-    <%- include('./partials/_navbar.ejs') %>
-    <div class="index-container">
-      <div class="text-container">
-        <h1 class="main-header">Games</h1>
-      </div>
-      <div class="auth-links">
-        <a class="signup-link" href="/auth/sign-up">Sign Up</a>
-        <a class="signin-link" href="/auth/sign-in">Sign In</a>
-      </div>
-    </div>
+  <body>
+    <h1>Welcome to the Game Recommendation Site</h1>
+    <% if (user) { %>
+    <p>Hello, <%= user.username %>!</p>
+    <a href="/auth/sign-out">Sign Out</a>
+    <a href="/games">View Games</a>
+    <a href="/games/new">Add New Game</a>
+    <% } else { %>
+    <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/sign-in">Sign In</a>
+    <% } %>
   </body>
 </html>

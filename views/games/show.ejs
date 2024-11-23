@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= game.gameName %></title>
+  </head>
+  <body>
+    <h1><%= game.gameName %></h1>
+    <p><%= game.description %></p>
+    <p>Type: <%= game.type %></p>
+    <p>Average Rating: <%= game.averageRating %></p>
+    <a href="/games">Back to list</a>
+
+    <h2>Reviews</h2>
+    <ul>
+      <% reviews.forEach(review => { %>
+      <li>
+        <strong>Rating:</strong> <%= review.rating %>
+        <p><%= review.comment %></p>
+        <% if (user && user._id.toString() === review.userId.toString()) { %>
+        <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">Edit</a>
+        <form
+          action="/games/<%= game._id %>/reviews/<%= review._id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+        <% } %>
+      </li>
+      <% }) %>
+    </ul>
+
+    <h3>Add a Review</h3>
+    <form action="/games/<%= game._id %>/reviews" method="POST">
+      <label for="rating">Rating:</label>
+      <input type="number" name="rating" min="1" max="5" required />
+      <label for="comment">Comment:</label>
+      <textarea name="comment"></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </body>
+</html>

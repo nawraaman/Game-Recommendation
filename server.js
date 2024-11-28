@@ -48,7 +48,7 @@ const reviewsController = require('./controllers/reviews')
 
 app.use('/auth', authController)
 app.use('/games', isSignedIn, gamesController)
-app.use('/:gameId/review', isSignedIn, reviewsController)
+app.use('/games/:gameId/reviews', isSignedIn, reviewsController)
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`)
